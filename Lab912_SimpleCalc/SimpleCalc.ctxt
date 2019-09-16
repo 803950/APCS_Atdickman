@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=SimpleCalc
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SimpleCalc\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=q\ p
+comment1.target=double\ add(double,\ double)
+comment2.params=q\ p
+comment2.target=double\ subtract(double,\ double)
+comment3.params=q\ p
+comment3.target=double\ multiply(double,\ double)
+comment4.params=q\ p
+comment4.target=double\ divide(double,\ double)
+comment5.params=q\ p
+comment5.target=int\ moduloDivide(int,\ int)
+numComments=6
