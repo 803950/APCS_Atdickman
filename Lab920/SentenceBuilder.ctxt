@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=SentenceBuilder
+comment1.params=
+comment1.target=void\ loadSentences()
+comment2.params=
+comment2.target=void\ getSentences()
+comment3.params=
+comment3.target=java.lang.String\ getRandomNoun()
+numComments=4
