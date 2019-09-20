@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Nested_Loops
+comment0.text=\r\n\ Nested\ loops\r\n\ \r\n\ @author\ tdickman\r\n\ @version\ 918\r\n
+comment1.params=
+comment1.target=void\ main()
+comment2.params=
+comment2.target=void\ ProblemA()
+comment3.params=
+comment3.target=void\ ProblemB()
+comment4.params=n
+comment4.target=void\ ProblemC(int)
+comment5.params=n
+comment5.target=void\ ProblemD(int)
+comment6.params=n
+comment6.target=void\ ProblemE(int)
+comment7.params=n
+comment7.target=void\ ProblemF(int)
+comment8.params=n
+comment8.target=void\ ProblemG(int)
+numComments=9
