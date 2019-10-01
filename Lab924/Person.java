@@ -1,25 +1,23 @@
 
 /**
- * Write a description of class Person here.
+ * Person class
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (tdickman)
+ * @version (929)
  */
 public class Person
 {
     private String fName;
     private String mName;
     private String lName;
-    public Person(String fullName){
-        fName = parseName(fullName)[0];
-        mName = parseName(fullName)[1];
-        lName = parseName(fullName)[2];
+    public Person(String name){
+        String fullName;
     }
     // format 1 = "Last,First Middle"
     // format 2 = "Last,First"
     // format 3 = "First Middle Last"
     // format 4 = "First Last"
-    public String[] parseName(String fullName){
+    public void parseName(String fullName){
         String[] name_array = new String[3];
         if(fullName.indexOf(",") != -1 & fullName.indexOf(" ") != -1){ // format1
             int len_index = fullName.length();
@@ -50,7 +48,9 @@ public class Person
             name_array[1] = "";
             name_array[2] = fullName.substring(space_index1 + 1);
         }
-        return name_array;
+        fName = name_array[0];
+        fName = name_array[0];
+        fName = name_array[0];
     }
     
     public String getFirstName(){
