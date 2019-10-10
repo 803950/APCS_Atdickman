@@ -6,8 +6,8 @@
  *</li><li>
  *      Will transform statements as well as react to keywords
  *</li></ul>
- * @author Laurie White
- * @version April 2012
+ * @author tdickman
+ * @version 1010
  *
  */
 public class Magpie4
@@ -59,6 +59,9 @@ public class Magpie4
         }
         else if(findKeyword(statement, "you",0) >= 0 && findKeyword(statement, "me") >= 3){
             response = transformYouMeStatement(statement);
+        }
+        else if(findKeyword(statement, "i",0) >= 0 && findKeyword(statement, "you") >= 2){
+            response = transformIYouStatement(statement);
         }
         else 
         {
@@ -115,7 +118,25 @@ public class Magpie4
         String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
     }
+    
+    /**
+     * Take a statement with "I <something> you" and transform it into 
+     * "Why do you <something> me?"
+     * @param statement the user statement, assumed to contain "i" followed by "me"
+     * @return the transformed statement
+     */
+    private String transformIYouStatement(String statement)
+    {
+        String response = "";
+        statement = statement.toLowerCase();
+        int psnOfYou = findKeyword (statement, "i", 0);
+        int psnOfMe = findKeyword (statement, "you", psnOfYou + 2);
 
+        String restOfStatement = statement.substring(psnOfYou + 2, psnOfMe).trim();
+        return "Why do you " + restOfStatement + " me?";
+    }
+    
+    
     /**
      * Search for one word in phrase. The search is not case
      * sensitive. This method will check that the given goal
