@@ -20,7 +20,6 @@ public class Magpie2
     {
         return "Hello, let's talk.";
     }
-<<<<<<< HEAD
 
     /**
      * Gives a response to a user statement
@@ -29,71 +28,6 @@ public class Magpie2
      *            the user statement
      * @return a response based on the rules given
      */
-    public String getResponse(String statement)
-    {
-        String response = "";
-        statement = statement.toLowerCase();
-        if (statement.indexOf("no") >= 0)
-        {
-            response = "Why so negative?";
-        }
-        else if (statement.indexOf("mother") >= 0
-        || statement.indexOf("father") >= 0
-        || statement.indexOf("sister") >= 0
-        || statement.indexOf("brother") >= 0)
-        {
-            response = "Tell me more about your family.";
-        }
-        else if (statement.indexOf("dog") >= 0
-        || statement.indexOf("cat") >= 0)
-        {
-            response = "Tell me more about your pets.";
-        }
-        else if (statement.indexOf("mr.") >= 0
-        || statement.indexOf("ms.") >= 0){
-            response = "They sound like a good teacher.";
-        }
-        else if(statement.trim().length() == 0){
-            response = "Talk to me!";
-        }
-        else if(statement.indexOf("I want") <= 0 & statement.length()>6){
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                    .length() - 1);
-        }
-        int psn = findKeyword (statement, "I want", 0);
-        String restOfStatement = statement.substring(psn + 6).trim();
-        return "Would you really be happy if you had " + restOfStatement + "?";
-        }
-        else if(statement.indexOf("I") != -1 & statement.indexOf("you") > statement.indexOf("I")){
-        statement = statement.trim();
-        String lastChar = statement.substring(statement
-                .length() - 1);
-        if (lastChar.equals("."))
-        {
-            statement = statement.substring(0, statement
-                    .length() - 1);
-        }
-        int iindex = statement.indexOf(" I ") + 1;
-        int youindex = statement.indexOf(" you ") + 1;
-        String restOfStatement = statement.substring(iindex,youindex).trim();
-        return "Would you really be happy if you had " + restOfStatement + "?";
-        }
-        // Question.Activity2.1: There is a keyword 
-        //    inside a larger word that has a different meaning.
-        //    For example, the computer looks at "know" and see that substring(1,3) == "no",
-        //    so it will think the person is being negative. 
-
-        else
-        {
-            response = getRandomResponse();
-        }
-        return response;
-    }
 
     /**
 =======
@@ -132,9 +66,9 @@ public class Magpie2
         else if(statement.trim().length() == 0){
             response = "Talk to me!";
         }
-        else if(statement.indexOf("I want") <= 0){
-            int space2 = statement.indexOf(" ",statement.indexOf("I want") + 6);
-            String smth = statement.substring(statement.indexOf("I want") + 6,space2);
+        else if(statement.indexOf("i want") != -1){
+            int space2 = statement.indexOf("i want") + 7;
+            String smth = statement.substring(space2);
             response = "Would you really be happy if you had " + smth + "?";
         }
         
@@ -150,8 +84,7 @@ public class Magpie2
         return response;
     }
 
-    /**
->>>>>>> 6b82d35007472dd0050dbab0ef799d1ade7b212f
+    /**f
      * Pick a default response to use if nothing else fits.
      * @return a non-committal string
      */
@@ -161,11 +94,7 @@ public class Magpie2
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 6b82d35007472dd0050dbab0ef799d1ade7b212f
         if (whichResponse == 0)
         {
             response = "Interesting, tell me more.";
@@ -190,7 +119,6 @@ public class Magpie2
         {
             response = "Could you phrase that differently?";
         }
-<<<<<<< HEAD
         return response;
     }
 
@@ -223,37 +151,3 @@ public class Magpie2
         return -1;
     }
 }
-=======
-            return response;
-        }
-    
-    private int findKeyword(String statement, String goal, int startPos)
-    {
-         String phrase = statement.trim().toLowerCase();
-         goal = goal.toLowerCase();
-         int psn = phrase.indexOf(goal, startPos);
-         while (psn >= 0)
-         {
-         String before = " ", after = " ";
-         if (psn > 0)
-         {
-         before = phrase.substring(psn - 1, psn);
-         }
-         if (psn + goal.length() < phrase.length())
-         {
-         after = phrase.substring(psn + goal.length(),
-         psn + goal.length() + 1);
-         }
-         /* determine the values of psn, before, and after at this point in the method. */
-         if (((before.compareTo ("a") < 0 ) || (before.compareTo("z") > 0))
-         &&
-         ((after.compareTo ("a") < 0 ) || (after.compareTo("z") > 0)))
-         {
-         return psn;
-         }
-         psn = phrase.indexOf(goal, psn + 1);
-         }
-         return -1;
-    }
-}
->>>>>>> 6b82d35007472dd0050dbab0ef799d1ade7b212f
