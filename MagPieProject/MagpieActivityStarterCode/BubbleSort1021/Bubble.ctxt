@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Bubble
 comment0.text=\r\n\ Bubble\ sorts\ a\ list\ of\ random\ numbers\r\n\r\n\ @author\ tdickman\r\n\ @version\ 1021\r\n
-comment1.params=
-comment1.target=Bubble()
+comment1.params=list
+comment1.target=int[]\ bubblesort(int[])
 comment2.params=list
-comment2.target=int[]\ bubblesort(int[])
-comment3.params=list
-comment3.target=void\ loadArray(int[])
-comment4.params=
-comment4.target=void\ main()
+comment2.target=void\ loadArray(int[])
+comment3.params=
+comment3.target=void\ main()
+comment4.params=list
+comment4.target=double\ getMedian(int[])
 numComments=5
