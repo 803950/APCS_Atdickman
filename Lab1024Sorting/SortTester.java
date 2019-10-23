@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class SortTester
 {
     static ArrayList<Integer> arrlist = new ArrayList<>();
-    private static int len = 100; // defines length of random array
+    private static int len = 1000; // defines length of random array
     private static int swapcounter = 0;
     private static int compcounter = 0;
     private static long timeElapsed;
@@ -30,7 +30,7 @@ public class SortTester
         System.out.println();
         System.out.println("Number of comparisons: " + compcounter);
         System.out.println("Number of swaps: " + swapcounter);
-        System.out.println("Duration :" + (double)timeElapsed/1000000 + " millisecond");
+        System.out.println("Duration :" + (double)timeElapsed/1000000 + " milliseconds");
 
         // insert sort
         System.out.println();
