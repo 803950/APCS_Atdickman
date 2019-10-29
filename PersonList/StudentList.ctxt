@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=StudentList
+comment1.params=
+comment1.target=StudentList()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ StudentList\r\n
+comment2.params=fullName
+comment2.target=void\ parseUserInput(java.lang.String)
+comment3.params=fullName
+comment3.target=void\ addStudent(java.lang.String)
+numComments=4
