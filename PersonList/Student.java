@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Student here.
  *
@@ -7,27 +6,52 @@
  */
 public class Student
 {
-    // instance variables - replace the example below with your own
-    private int x;
+  String fName;
+  String mName;
+  String lName;
+  int stuNumber;
+  double gpa;
 
-    /**
-     * Constructor for objects of class Student
-     */
-    public Student()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+  public Student(String first, String middle, String last, int stum, double GPA)
+  {
+      fName = first;
+      mName = middle;
+      lName = last;
+      stuNumber = stum;
+      gpa = GPA;
+  }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+// Setters
+  public void setFirst(String first){
+    fName = first;
+  }
+
+  public void setMiddle(String middle){
+    mName = middle;
+  }
+
+  public void setLast(String last){
+    lName = last;
+  }
+
+  public void setNum(int number){
+    stuNumber = number;
+  }
+
+  public void setGpa(double gPA){
+    gpa = gPA;
+  }
+
+// Getters
+  public String getFullName(){
+    return(lName + ", " + fName + " " + mName);
+  }
+
+  public double getGpa(){
+    return(gpa-gpa%0.01); // rounds to 2 decimal places
+  }
+
+  public int getStuNumber(){
+    return stuNumber;
+  }
 }
