@@ -15,27 +15,55 @@ public class StudentList
      */
     public StudentList()
     {
-        addStudent("");
+        addStudentToList("");
     }
 
     private String[] parseUserInput(String name){
         String[] string = new String[3];
-        string[0] = "";
-        string[1] = "";
-        string[2] = "";
+        int comma_index = name.indexOf(",");
+        int space_index = name.lastIndexOf(" ");
+        string[0] = name.substring(comma_index+2, space_index);
+        string[1] = name.substring(space_index + 1,name.length());
+        string[2] = name.substring(0,comma_index);
         return string;
     }
 
-    public void addStudent(String fullName){
+    public void addStudentToList(String fullName){
         System.out.print("Please input a GPA as a double:  ");
         double GPA = kb.nextDouble();
-        System.out.print("Please input a GPA as an integer:  ");
+        System.out.print("Please input a student number as an 6 digit integer:  ");
         int stuNum = kb.nextInt();
         String[] namelist = parseUserInput(fullName);
-        fName = namelist[0];
-        mName = namelist[1];
-        lName = namelist[2];
+        String fName = namelist[0];
+        String mName = namelist[1];
+        String lName = namelist[2];
         Student stud = new Student(fName,mName,lName,stuNum,GPA);
         studlist.add(stud);
+    }
+
+    public void deleteStudentFromList(){
+
+    }
+
+    public void editStudentList(){
+
+    }
+
+    public void printAll(){
+        for(int i = 0; i < studlist.size(); i++){
+            System.out.print(studlist.get(i));
+        }
+    }
+
+    public void printStudent(){
+
+    }
+
+    public void clearList(){
+
+    }
+
+    public void sortStudents(){
+
     }
 }
