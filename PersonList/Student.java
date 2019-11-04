@@ -6,19 +6,16 @@
  */
 public class Student
 {
-  String fName;
-  String mName;
-  String lName;
-  int stuNumber;
-  double gpa;
+  private String fName;
+  private String mName;
+  private String lName;
+  private int stuNumber;
+  private double gpa;
 
-  public Student(String first, String middle, String last, int stum, double GPA)
+  public Student(String fullname, int stum, double GPA)
   {
-      fName = first;
-      mName = middle;
-      lName = last;
-      stuNumber = stum;
       gpa = GPA;
+      stuNumber = stum;
   }
 
 // Setters
@@ -53,5 +50,17 @@ public class Student
 
   public int getStuNumber(){
     return stuNumber;
+  }
+  
+  public String getFirst(){
+    return fName;
+  }
+
+  public String getMiddle(){
+    return mName;
+  }
+
+  public String getLast(){
+    return lName;
   }
 }

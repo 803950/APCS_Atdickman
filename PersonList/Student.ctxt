@@ -1,8 +1,14 @@
 #BlueJ class context
 comment0.target=Student
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Student\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=first\ middle\ last\ stum\ GPA
-comment1.target=Student(java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ double)
+comment1.params=fullname\ stum\ GPA
+comment1.target=Student(java.lang.String,\ int,\ double)
+comment10.params=
+comment10.target=java.lang.String\ getFirst()
+comment11.params=
+comment11.target=java.lang.String\ getMiddle()
+comment12.params=
+comment12.target=java.lang.String\ getLast()
 comment2.params=first
 comment2.target=void\ setFirst(java.lang.String)
 comment3.params=middle
@@ -19,4 +25,4 @@ comment8.params=
 comment8.target=double\ getGpa()
 comment9.params=
 comment9.target=int\ getStuNumber()
-numComments=10
+numComments=13

@@ -16,7 +16,7 @@ public class StudentListRunner
         System.out.println("2: Delete student");
         System.out.println("3: Update student");
         System.out.println("4: Display all students");
-        System.out.println("5: Distplay student");
+        System.out.println("5: Display student");
         System.out.println("6: Clear all students");
         System.out.println("7: Sort students by last name");
         System.out.println("Type \"quit\" to quit");
@@ -25,39 +25,47 @@ public class StudentListRunner
         Scanner scanner = new Scanner(System.in);
         String inputnum = "";
         String num = "";
-        while(!inputnum.equals("quit")){
+        do{
             num = inputnum;
             inputnum = scanner.nextLine();
-            if(num.equals("1")){
-                System.out.println("Input a full name in the format Last, First Middle");
-                Scanner kb = new Scanner(System.in);
+            Scanner kb = new Scanner(System.in);
+            switch(inputnum){
+                case "1":
+                System.out.println("Input a full name");
                 String str = kb.nextLine();
-                studlist.addStudentToList(str);
-            }
-            if(num.equals("2")){
+                System.out.println("Enter a student GPA:");
+                double gpa = kb.nextDouble();
+                kb.nextLine();
+                System.out.println("Enter a student number:");
+                int number = kb.nextInt();
+                kb.nextLine();
+                studlist.addStudentToList(str, number, gpa);
+
+                case "2":
                 studlist.deleteStudentFromList();
-            }
-            if(num.equals("3")){
+
+                case "3":
                 studlist.editStudentList();
-            }
-            if(num.equals("4")){
+
+                case "4":
                 studlist.printAll();
-            }
-            if(num.equals("5")){
-                studlist.printStudent();
-            }
-            if(num.equals("6")){
+
+                case "5":
+                studlist.printStudent("Joe Mama");
+
+                case "6":
                 studlist.clearList();
-            }
-            if(num.equals("7")){
+
+                case "7":
                 studlist.sortStudents();
-            if(num.equals("quit")){
-            }
-            }else{
+                default:
                 System.out.println("Invalid input");
             }
-                
-        }
+        }  
+        while(!inputnum.equals("quit"));
+    }
+
+    public static void clr(){
     }
 }
 // for display/while loop
