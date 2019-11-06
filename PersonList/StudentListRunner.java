@@ -17,7 +17,9 @@ public class StudentListRunner
             printMenu();
             inputnum = scanner.nextLine();
             Scanner kb = new Scanner(System.in);
+            clr();
             if (inputnum.equals("1")){
+                clr(); 
                 System.out.println("Input a full name");
                 String str = kb.nextLine();
                 System.out.println("Enter a student GPA:");
@@ -28,17 +30,46 @@ public class StudentListRunner
                 kb.nextLine();
                 studlist.addStudentToList(str, number, gpa);
             }else if(inputnum.equals("2")){
-                studlist.deleteStudentFromList();
-            }else if(inputnum.equals("3")){
+                System.out.println("Enter 1 to delete by last name");
+                System.out.println("Enter 2 to delete by student number");
+                int inpt = kb.nextInt();
+                kb.nextLine();
+                if(inpt == 1){
+                    studlist.deleteStudentFromList(kb.nextLine());
+                }
+                if(inpt == 2){
+                    studlist.deleteStudentFromList(kb.nextLine());
+                }else{
+                    System.out.println("Invalid input");
+                }
+                
+                clr();
+            }else if(inputnum.equals("3")){ 
                 studlist.editStudentList();
+                clr();
             }else if(inputnum.equals("4")){
                 studlist.printAll();
             }else if(inputnum.equals("5")){
-                studlist.printStudent("");
+                System.out.print("Enter 1 to sort by last name \nEnter 2 to sort by student number ");
+                int input = kb.nextInt();
+                kb.nextLine();
+                if(input == 1){
+                    System.out.print("Enter last name: ");
+                    studlist.printStudent(kb.nextLine().trim());
+                    System.out.println();
+                }else if(input == 2){
+                    System.out.print("Enter student number: ");
+                    studlist.printStudent(kb.nextInt());
+                    System.out.println();
+                }
+                studlist.printStudent(kb.nextLine());
+                
             }else if(inputnum.equals("6")){
                 studlist.clearList();
+                clr();
             }else if(inputnum.equals("7")){
                 studlist.sortStudents();
+                clr();
             }else if(inputnum.equals("quit")){
                 break;
             }else{
@@ -51,7 +82,7 @@ public class StudentListRunner
     }
 
     public static void clr(){
-        //System.out.print("\033[H\033[2J");
+        System.out.print('\u000c');
     }
 
     public static void printMenu(){

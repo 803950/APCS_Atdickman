@@ -1,8 +1,8 @@
 /**
- * Write a description of class StudentList here.
+ * All methods that can be used from the menu
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author tdickman
+ * @version 11/6
  */
 import java.util.*;
 public class StudentList
@@ -14,16 +14,47 @@ public class StudentList
      * Constructor for objects of class StudentList
      */
 
-  
     public void addStudentToList(String fullName, int stuNum, double GPA){
         Student stud = new Student(fullName, stuNum, GPA);
         studlist.add(stud);
     }
 
-    public void deleteStudentFromList(){
-
+    public void deleteStudentFromList(int x){
+        boolean temp = false;
+        int num = 0;
+        ArrayList<Student> student = new ArrayList<Student>();
+        for(int i = 0; i < studlist.size() && (temp = false); i++){
+            if(studlist.get(i).getStuNumber() == x){
+                temp = true;
+                num = i;
+            }
+        }
+        if(temp == true){
+            studlist.remove(num);
+        }
+        else{
+            System.out.println("Student does not exist");
+        }
     }
-
+    
+    public void deleteStudentFromList(String lname){
+        boolean temp = false;
+        int num = 0;
+        ArrayList<Student> student = new ArrayList<Student>();
+        for(int i = 0; i < studlist.size(); i++){
+            if(studlist.get(i).getLast().equals(lname.trim())){
+                temp = true;
+                num = i;
+            }
+        }
+        if(temp == true){
+            studlist.remove(num);
+        }
+        else{
+            System.out.println("Student does not exist");
+        }
+    }
+    
     public void editStudentList(){
 
     }
@@ -33,6 +64,15 @@ public class StudentList
             System.out.println("Student name: " + studlist.get(i).getFullName());
             System.out.println("Student number: " + studlist.get(i).getStuNumber());
             System.out.println("Student gpa: " + studlist.get(i).getGpa());
+        }
+
+    }
+
+    public void printList(ArrayList<Student> plist){
+        for(int i = 0; i < plist.size(); i++){
+            System.out.println("Student name: " + plist.get(i).getFullName());
+            System.out.println("Student number: " + plist.get(i).getStuNumber());
+            System.out.println("Student gpa: " + plist.get(i).getGpa());
         }
 
     }
@@ -52,6 +92,7 @@ public class StudentList
     public void printStudent(int x){
         boolean temp = false;
         int num = 0;
+        ArrayList<Student> student = new ArrayList<Student>();
         for(int i = 0; i < studlist.size() && (temp = false); i++){
             if(studlist.get(i).getStuNumber() == x){
                 temp = true;
@@ -59,23 +100,30 @@ public class StudentList
             }
         }
         if(temp == true){
-            ArrayList<Student> student = new ArrayList<Student>();
             student.add(studlist.get(num));
+            printList(student);
+        }
+        else{
+            System.out.println("Student does not exist");
         }
     }
 
     public void printStudent(String lname){
         boolean temp = false;
         int num = 0;
-        for(int i = 0; i < studlist.size() && (temp = false); i++){
+        ArrayList<Student> student = new ArrayList<Student>();
+        for(int i = 0; i < studlist.size(); i++){
             if(studlist.get(i).getLast().equals(lname.trim())){
                 temp = true;
                 num = i;
             }
         }
         if(temp == true){
-            ArrayList<Student> student = new ArrayList<Student>();
             student.add(studlist.get(num));
+            printList(student);
+        }
+        else{
+            System.out.println("Student does not exist");
         }
     }
 
