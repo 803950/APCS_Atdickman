@@ -10,6 +10,51 @@ public class StudentListRunner
 { 
     public static void main() 
     {
+        StudentList studlist = new StudentList();
+        Scanner scanner = new Scanner(System.in);
+        String inputnum = "";
+        while(!inputnum.equals("quit")){
+            printMenu();
+            inputnum = scanner.nextLine();
+            Scanner kb = new Scanner(System.in);
+            if (inputnum.equals("1")){
+                System.out.println("Input a full name");
+                String str = kb.nextLine();
+                System.out.println("Enter a student GPA:");
+                double gpa = kb.nextDouble();
+                kb.nextLine();
+                System.out.println("Enter a student number:");
+                int number = kb.nextInt();
+                kb.nextLine();
+                studlist.addStudentToList(str, number, gpa);
+            }else if(inputnum.equals("2")){
+                studlist.deleteStudentFromList();
+            }else if(inputnum.equals("3")){
+                studlist.editStudentList();
+            }else if(inputnum.equals("4")){
+                studlist.printAll();
+            }else if(inputnum.equals("5")){
+                studlist.printStudent("");
+            }else if(inputnum.equals("6")){
+                studlist.clearList();
+            }else if(inputnum.equals("7")){
+                studlist.sortStudents();
+            }else if(inputnum.equals("quit")){
+                break;
+            }else{
+                System.out.println("Invalid input");
+            }
+            System.out.println("press Enter to continue");
+            kb.nextLine();
+            clr();  
+        }  
+    }
+
+    public static void clr(){
+        //System.out.print("\033[H\033[2J");
+    }
+
+    public static void printMenu(){
         System.out.println("Select an option by entering an integer 1-7:");
         System.out.println();
         System.out.println("1: Add student");
@@ -21,51 +66,6 @@ public class StudentListRunner
         System.out.println("7: Sort students by last name");
         System.out.println("Type \"quit\" to quit");
         System.out.println();
-        StudentList studlist = new StudentList();
-        Scanner scanner = new Scanner(System.in);
-        String inputnum = "";
-        String num = "";
-        do{
-            num = inputnum;
-            inputnum = scanner.nextLine();
-            Scanner kb = new Scanner(System.in);
-            switch(inputnum){
-                case "1":
-                System.out.println("Input a full name");
-                String str = kb.nextLine();
-                System.out.println("Enter a student GPA:");
-                double gpa = kb.nextDouble();
-                kb.nextLine();
-                System.out.println("Enter a student number:");
-                int number = kb.nextInt();
-                kb.nextLine();
-                studlist.addStudentToList(str, number, gpa);
-
-                case "2":
-                studlist.deleteStudentFromList();
-
-                case "3":
-                studlist.editStudentList();
-
-                case "4":
-                studlist.printAll();
-
-                case "5":
-                studlist.printStudent("Joe Mama");
-
-                case "6":
-                studlist.clearList();
-
-                case "7":
-                studlist.sortStudents();
-                default:
-                System.out.println("Invalid input");
-            }
-        }  
-        while(!inputnum.equals("quit"));
-    }
-
-    public static void clr(){
     }
 }
 // for display/while loop

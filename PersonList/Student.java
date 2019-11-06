@@ -4,63 +4,101 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Student
+import java.lang.*;
+public class Student implements Comparable<Student>
 {
-  private String fName;
-  private String mName;
-  private String lName;
-  private int stuNumber;
-  private double gpa;
+    private String fName;
+    private String mName;
+    private String lName;
+    private int stuNumber;
+    private double gpa;
 
-  public Student(String fullname, int stum, double GPA)
-  {
-      gpa = GPA;
-      stuNumber = stum;
-  }
+    public Student(String fullName, int stum, double GPA)
+    {
+        gpa = GPA;
+        stuNumber = stum;
+        parseUserInput(fullName);
+    }
 
-// Setters
-  public void setFirst(String first){
-    fName = first;
-  }
+    public void parseUserInput(String userName){
+        String[] arr = userName.split(" ");
+        int commaIndex = arr[0].indexOf(',');
+        if(arr.length > 4 || arr.length < 2){
+            System.out.println("Name was entered in the wrong format.");
+        }else if(arr.length == 3){
+            if(commaIndex == -1){ //
+                setFirst(arr[0]);
+                setMiddle(arr[1]);
+                setLast(arr[2]);
+            }
+            else{
+                arr[0] = arr[0].substring(0, commaIndex);
+                setFirst(arr[2]);
+                setMiddle(arr[1]);
+                setLast(arr[0]);
+            }
+        }else{
+            if(commaIndex == -1){
+                setFirst(arr[0]);
+                setMiddle(arr[1]);
+                setLast("");
+            }
+            else{
+                arr[0] = arr[0].substring(0, commaIndex);
+                setFirst(arr[1]);
+                setMiddle(arr[0]);
+                setLast("");
+            }
+        }
+    }
 
-  public void setMiddle(String middle){
-    mName = middle;
-  }
+    // Setters
+    public void setFirst(String first){
+        fName = first;
+    }
 
-  public void setLast(String last){
-    lName = last;
-  }
+    public void setMiddle(String middle){
+        mName = middle;
+    }
 
-  public void setNum(int number){
-    stuNumber = number;
-  }
+    public void setLast(String last){
+        lName = last;
+    }
 
-  public void setGpa(double gPA){
-    gpa = gPA;
-  }
+    public void setNum(int number){
+        stuNumber = number;
+    }
 
-// Getters
-  public String getFullName(){
-    return(lName + ", " + fName + " " + mName);
-  }
+    public void setGpa(double gPA){
+        gpa = gPA;
+    }
 
-  public double getGpa(){
-    return(gpa-gpa%0.01); // rounds to 2 decimal places
-  }
+    // Getters
+    public String getFullName(){
+        return(lName + ", " + fName + " " + mName);
+    }
 
-  public int getStuNumber(){
-    return stuNumber;
-  }
-  
-  public String getFirst(){
-    return fName;
-  }
+    public double getGpa(){
+        return(gpa); // rounds to 2 decimal places
+    }
 
-  public String getMiddle(){
-    return mName;
-  }
+    public int getStuNumber(){
+        return stuNumber;
+    }
 
-  public String getLast(){
-    return lName;
-  }
+    public String getFirst(){
+        return fName;
+    }
+
+    public String getMiddle(){
+        return mName;
+    }
+
+    public String getLast(){
+        return lName;
+    }
+
+    public int compareTo(Student s){ // only one parameter because it is comparing to "this" student that we are in right now
+        return this.getLast().compareTo(s.getLast());
+    }
 }
