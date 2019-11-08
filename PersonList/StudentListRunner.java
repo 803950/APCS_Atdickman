@@ -5,7 +5,8 @@
  * @author tdickman
  * @version 1025
  */
-import java.util.Scanner; 
+import java.util.Scanner;
+import java.util.*;
 public class StudentListRunner
 { 
     public static void main() 
@@ -20,6 +21,7 @@ public class StudentListRunner
             clr();
             if (inputnum.equals("1")){
                 clr(); 
+                try{
                 System.out.println("Input a full name");
                 String str = kb.nextLine();
                 System.out.println("Enter a student GPA:");
@@ -29,6 +31,13 @@ public class StudentListRunner
                 int number = kb.nextInt();
                 kb.nextLine();
                 studlist.addStudentToList(str, number, gpa);
+                }
+                catch(InputMismatchException number){
+                    System.out.println("Invalid Input");
+                    kb.nextLine();
+                }
+                
+                
             }else if(inputnum.equals("2")){
                 System.out.println("Enter 1 to delete by last name");
                 System.out.println("Enter 2 to delete by student number");
@@ -45,7 +54,8 @@ public class StudentListRunner
                 
                 clr();
             }else if(inputnum.equals("3")){ 
-                studlist.editStudentList();
+                int inputstudnum = kb.nextInt();
+                studlist.updateStudent(inputstudnum);
                 clr();
             }else if(inputnum.equals("4")){
                 studlist.printAll();

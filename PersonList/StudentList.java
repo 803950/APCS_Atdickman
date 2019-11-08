@@ -36,7 +36,7 @@ public class StudentList
             System.out.println("Student does not exist");
         }
     }
-    
+
     public void deleteStudentFromList(String lname){
         boolean temp = false;
         int num = 0;
@@ -54,9 +54,35 @@ public class StudentList
             System.out.println("Student does not exist");
         }
     }
-    
-    public void editStudentList(){
 
+    public void updateStudent(int x){
+        boolean temp = false;
+        int num = 0;
+        ArrayList<Student> student = new ArrayList<Student>();
+        for(int i = 0; i < studlist.size() && (temp = false); i++){
+            if(studlist.get(i).getStuNumber() == x){
+                temp = true;
+                num = i;
+            }
+        }
+        if(temp == true){
+            System.out.println("Press 1 to update name,");
+            System.out.println("Press 2 to update GPA,");
+            System.out.println("Press 3 to change name,");
+            int inputn = 0;
+            try{
+                inputn = kb.nextInt();
+            }catch(InputMismatchException e){
+                System.out.println("Invalid input");
+                kb.nextLine();
+            }
+            if(inputn == 1){
+                System.out.println("New Name: ");
+            }
+        }
+        else{
+            System.out.println("Student does not exist");
+        }
     }
 
     public void printList(){
