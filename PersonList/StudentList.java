@@ -20,12 +20,47 @@ public class StudentList
         studlist.add(stud);
     }
 
-    public void deleteStudentFromList(){
-
+    public void deleteStudentFromList(String lname){
+        boolean temp = false;
+        int num = 0;
+        for(int i = 0; i < studlist.size() && (temp == false); i++){
+            if(studlist.get(i).getLast().equals(lname.trim())){
+                temp = true;
+                num = i;
+            }
+        }
+        if(temp == true){
+            studlist.remove(num);
+        }
+    }
+    
+    public void deleteStudentFromList(int x){
+        boolean temp = false;
+        int num = 0;
+        for(int i = 0; i < studlist.size() && (temp == false); i++){
+            if(studlist.get(i).getStuNumber() == x){
+                temp = true;
+                num = i;
+            }
+        }
+        if(temp == true){
+            studlist.remove(num);
+        }
     }
 
-    public void editStudentList(){
-
+    public void editStudentList(int stuNum, String str, double gpa){
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        for(int i = 0; i < studlist.size(); i++){
+            if(studlist.get(i).getFullName().indexOf(str.trim()) != -1){
+                nums.add(i);
+            }
+        }
+        if(nums.size() > 1){
+            System.out.println("There are " + nums.size() + " that have that last name");
+        }
+        else if(nums.size() == 1){
+            
+        }
     }
 
     public void printList(){
@@ -84,7 +119,7 @@ public class StudentList
     }
 
     public void sortStudents(){
-        Collections.sort(studlist);
+        
     }
 
     public void printList(String[] list){

@@ -28,11 +28,27 @@ public class StudentListRunner
                 kb.nextLine();
                 studlist.addStudentToList(str, number, gpa);
             }else if(inputnum.equals("2")){
-                studlist.deleteStudentFromList();
+                System.out.print("Press 1 to input last name, 2 to input student number");
+                int userinput = kb.nextInt();
+                kb.nextLine();
+                if(userinput == 1){
+                    System.out.println("Input a last name: ");
+                    String username = kb.nextLine();
+                    studlist.deleteStudentFromList(username);
+                }
+                if(userinput == 2){
+                    System.out.println("Input a student number: ");
+                    int usernum = kb.nextInt();
+                    studlist.deleteStudentFromList(usernum);
+                    kb.nextLine();
+                }                
             }else if(inputnum.equals("3")){
                 studlist.editStudentList();
             }else if(inputnum.equals("4")){
+                System.out.println("_____________________________");
+                System.out.println("All students: ");
                 studlist.printAll();
+                System.out.println("_____________________________");
             }else if(inputnum.equals("5")){
                 studlist.printStudent("");
             }else if(inputnum.equals("6")){
@@ -51,7 +67,7 @@ public class StudentListRunner
     }
 
     public static void clr(){
-        //System.out.print("\033[H\033[2J");
+        System.out.print('\u000c');
     }
 
     public static void printMenu(){
