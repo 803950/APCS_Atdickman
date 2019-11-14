@@ -43,7 +43,24 @@ public class StudentListRunner
                     kb.nextLine();
                 }                
             }else if(inputnum.equals("3")){
-                studlist.editStudentList();
+                System.out.println("press 1 to input student last name, 2 to input student number");
+                int inputn = kb.nextInt();
+                kb.nextLine();
+                if(inputn == 1){
+                    System.out.print("Input a last name:  ");
+                    String inputl = kb.nextLine();
+                    System.out.println();
+                    studlist.editStudentList(inputl);
+                }
+                if(inputn == 2){
+                    System.out.print("Input a studentNumber:  ");
+                    int inputnm = kb.nextInt();
+                    System.out.println();
+                    studlist.editStudentList(inputnm);
+                }
+                if(inputn == 1){ // temporary
+                    
+                }
             }else if(inputnum.equals("4")){
                 System.out.println("_____________________________");
                 System.out.println("All students: ");

@@ -48,21 +48,61 @@ public class StudentList
         }
     }
 
-    public void editStudentList(int stuNum, String str, double gpa){
-        ArrayList<Integer> nums = new ArrayList<Integer>();
-        for(int i = 0; i < studlist.size(); i++){
-            if(studlist.get(i).getFullName().indexOf(str.trim()) != -1){
-                nums.add(i);
+    public void editStudentList(int stuNum){
+        boolean temp = false;
+        int num = 0;
+        for(int i = 0; i < studlist.size() && (temp == false); i++){
+            if(studlist.get(i).getStuNumber() == stuNum){
+                temp = true;
+                num = i;
             }
         }
-        if(nums.size() > 1){
-            System.out.println("There are " + nums.size() + " that have that last name");
+        System.out.println("Selected student:  ");
+        printStudent(studlist.get(num));
+        if(temp == true){
+            System.out.print("New full name:  ");
+            String newname = kb.nextLine();
+            System.out.println(); //
+            System.out.print("New GPA:  ");
+            double newGPA = kb.nextDouble();
+            System.out.println();
+            kb.nextLine();
+            Student newstudent = new Student(newname, stuNum, newGPA);
+            newstudent.parseUserInput(newstudent.getFullName());
+            studlist.remove(num);
+            studlist.add(newstudent);
         }
-        else if(nums.size() == 1){
-            
-        }
+        
     }
-
+    
+    public void editStudentList(String lName){
+        boolean temp = false;
+        int num = 0;
+        for(int i = 0; i < studlist.size() && (temp == false); i++){
+            if(studlist.get(i).getLast().equals(lName)){
+                temp = true;
+                num = i;
+            }
+        }
+        System.out.println("Selected student:  ");
+        printStudent(studlist.get(num));
+        if(temp == true){
+            System.out.print("New student number:  ");
+            int newNum = kb.nextInt();
+            System.out.println(); //
+            System.out.print("New GPA:  ");
+            double newGPA = kb.nextDouble();
+            System.out.println();
+            kb.nextLine();
+            String name = studlist.get(num).getFullName();
+            Student newstudent = new Student(name, newNum, newGPA);
+            newstudent.parseUserInput(newstudent.getFullName());
+            studlist.remove(num);
+            studlist.add(newstudent);
+        }
+        
+    }
+    
     public void printList(){
         for(int i = 0;i <studlist.size(); i++){
             System.out.println("Student name: " + studlist.get(i).getFullName());
