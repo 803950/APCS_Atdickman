@@ -67,11 +67,62 @@ public class StudentListRunner
                 studlist.printAll();
                 System.out.println("_____________________________");
             }else if(inputnum.equals("5")){
-                studlist.printStudent("");
+                System.out.println("press 1 to input student last name, 2 to input student number");
+                int intpmn = kb.nextInt();
+                kb.nextLine();
+                if(intpmn == 1){
+                    System.out.print("Student last name:  ");
+                    String ln = kb.nextLine();
+                    System.out.println();
+                    studlist.printStudent(ln);
+                }
+                if(intpmn == 2){
+                    System.out.print("Student number:  ");
+                    int sn = kb.nextInt();
+                    kb.nextLine();
+                    System.out.println();
+                    studlist.printStudent(sn);
+                }if(intpmn != 1 && intpmn != 2){
+                    System.out.println("Invalid input");
+                }
             }else if(inputnum.equals("6")){
                 studlist.clearList();
             }else if(inputnum.equals("7")){
                 studlist.sortStudents();
+            }else if (inputnum.equals("8")){
+                System.out.println("Options: ");
+                System.out.println("1: Find all students with GPA greater than or equal to your inputted GPA key");
+                System.out.println("2: Find all students with GPA less than or equal to your inputted GPA key");
+                System.out.println("3: Find all students with student number greater than or equal to your inputted GPA key");
+                System.out.println("4: Find all students with student number less than or equal to your inputted GPA key");
+                int innt = kb.nextInt();
+                kb.nextLine();
+                double inpgpa;
+                int stumn;
+                if(innt == 1){
+                    inpgpa = kb.nextDouble();
+                    kb.nextLine();
+                    studlist.filterSearchStudentListMore(inpgpa);
+                }
+                if(innt == 2){
+                    inpgpa = kb.nextDouble();
+                    kb.nextLine();
+                    studlist.filterSearchStudentListLess(inpgpa);
+                }
+                if(innt == 3){
+                    stumn = kb.nextInt();
+                    kb.nextLine();
+                    studlist.filterSearchStudentListMore(stumn);
+                }
+                if(innt == 4){
+                    stumn = kb.nextInt();
+                    kb.nextLine();
+                    studlist.filterSearchStudentListLess(stumn);
+                }
+                
+                
+                
+                
             }else if(inputnum.equals("quit")){
                 break;
             }else{
@@ -97,6 +148,7 @@ public class StudentListRunner
         System.out.println("5: Display student");
         System.out.println("6: Clear all students");
         System.out.println("7: Sort students by last name");
+        System.out.println("8: Search students by keys");
         System.out.println("Type \"quit\" to quit");
         System.out.println();
     }

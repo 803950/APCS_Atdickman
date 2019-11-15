@@ -14,10 +14,8 @@ public class StudentList
      * Constructor for objects of class StudentList
      */
 
-  
     public void addStudentToList(String fullName, int stuNum, double GPA){
-        Student stud = new Student(fullName, stuNum, GPA);
-        studlist.add(stud);
+        studlist.add(new Student(fullName, stuNum, GPA));
     }
 
     public void deleteStudentFromList(String lname){
@@ -33,7 +31,7 @@ public class StudentList
             studlist.remove(num);
         }
     }
-    
+
     public void deleteStudentFromList(int x){
         boolean temp = false;
         int num = 0;
@@ -72,9 +70,9 @@ public class StudentList
             studlist.remove(num);
             studlist.add(newstudent);
         }
-        
+
     }
-    
+
     public void editStudentList(String lName){
         boolean temp = false;
         int num = 0;
@@ -100,9 +98,17 @@ public class StudentList
             studlist.remove(num);
             studlist.add(newstudent);
         }
-        
+
     }
-    
+
+    public void printList(ArrayList<Student> studlist){
+        for(int i = 0;i <studlist.size(); i++){
+            System.out.println("Student name: " + studlist.get(i).getFullName());
+            System.out.println("Student number: " + studlist.get(i).getStuNumber());
+            System.out.println("Student gpa: " + studlist.get(i).getGpa());
+        }
+    }
+
     public void printList(){
         for(int i = 0;i <studlist.size(); i++){
             System.out.println("Student name: " + studlist.get(i).getFullName());
@@ -133,25 +139,69 @@ public class StudentList
                 num = i;
             }
         }
+
         if(temp == true){
-            ArrayList<Student> student = new ArrayList<Student>();
-            student.add(studlist.get(num));
+            printStudent(studlist.get(num));
         }
     }
 
-    public void printStudent(String lname){
-        boolean temp = false;
-        int num = 0;
-        for(int i = 0; i < studlist.size() && (temp = false); i++){
-            if(studlist.get(i).getLast().equals(lname.trim())){
-                temp = true;
-                num = i;
+    public void filterSearchStudentListLess(int num){
+        ArrayList<Student> studs = new ArrayList<Student>();
+        for(int i = 0; i <studlist.size(); i++){
+            if(studlist.get(i).getStuNumber() >= num){
+                studs.add(studlist.get(i));
             }
         }
-        if(temp == true){
-            ArrayList<Student> student = new ArrayList<Student>();
-            student.add(studlist.get(num));
+        printList(studs);
+        
+    }
+    
+    public void filterSearchStudentListMore(int num){
+        ArrayList<Student> studs = new ArrayList<Student>();
+        for(int i = 0; i <studlist.size(); i++){
+            if(studlist.get(i).getStuNumber() <= num){
+                studs.add(studlist.get(i));
+            }
         }
+        printList(studs);
+        
+    }
+    
+    public void filterSearchStudentListLess(double gpa){
+        ArrayList<Student> studs = new ArrayList<Student>();
+        for(int i = 0; i <studlist.size(); i++){
+            if(studlist.get(i).getGpa() >= gpa){
+                studs.add(studlist.get(i));
+            }
+        }
+        printList(studs);
+        
+    }
+    
+    public void filterSearchStudentListMore(double gpa){
+        ArrayList<Student> studs = new ArrayList<Student>();
+        for(int i = 0; i <studlist.size(); i++){
+            if(studlist.get(i).getGpa() <= gpa){
+                studs.add(studlist.get(i));
+            }
+        }
+        printList(studs);
+        
+    }
+
+    public void printStudent(String lname){
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        for(int i = 0; i < studlist.size(); i++){
+            if(studlist.get(i).getLast().indexOf(lname.trim()) != -1){
+                nums.add(i);
+            }
+        }
+        if(nums.size() > 1)
+            System.out.println("There are " + nums.size() + " students with that last name");
+        else if(nums.size() == 1)
+            printStudent(studlist.get(nums.get(0)));
+        else if(nums.size() == 0)
+            System.out.println("There are no students with that last name.");
     }
 
     public void clearList(){
@@ -159,7 +209,7 @@ public class StudentList
     }
 
     public void sortStudents(){
-        
+
     }
 
     public void printList(String[] list){
