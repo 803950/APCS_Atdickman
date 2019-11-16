@@ -1,9 +1,8 @@
-
 /**
- * Write a description of class PersonList here.
+ * StudentListRunner runs the menu and all user inputs, and runs studentlist methods
  *
- * @author tdickman
- * @version 1025
+ * Tal Dickman
+ * 16 November 2019
  */
 import java.util.Scanner;
 public class StudentListRunner
@@ -17,17 +16,17 @@ public class StudentListRunner
             printMenu();
             inputnum = scanner.nextLine();
             Scanner kb = new Scanner(System.in);
-            if (inputnum.equals("1")){
+            if (inputnum.equals("1")){ // Adds a student into studlist with user inputted full name, GPA, and Student Number.
                 System.out.println("Input a full name");
                 String str = kb.nextLine();
-                System.out.println("Enter a student GPA:");
-                double gpa = kb.nextDouble();
-                kb.nextLine();
                 System.out.println("Enter a student number:");
                 int number = kb.nextInt();
                 kb.nextLine();
+                System.out.println("Enter a student GPA:");
+                double gpa = kb.nextDouble();
+                kb.nextLine();
                 studlist.addStudentToList(str, number, gpa);
-            }else if(inputnum.equals("2")){
+            }else if(inputnum.equals("2")){ // Deletes a student based on user inputted last name or student number.
                 System.out.print("Press 1 to input last name, 2 to input student number");
                 int userinput = kb.nextInt();
                 kb.nextLine();
@@ -42,7 +41,7 @@ public class StudentListRunner
                     studlist.deleteStudentFromList(usernum);
                     kb.nextLine();
                 }                
-            }else if(inputnum.equals("3")){
+            }else if(inputnum.equals("3")){ // Using one user inputted student data, updates other two data of the student with new user input.
                 System.out.println("press 1 to input student last name, 2 to input student number");
                 int inputn = kb.nextInt();
                 kb.nextLine();
@@ -59,14 +58,14 @@ public class StudentListRunner
                     studlist.editStudentList(inputnm);
                 }
                 if(inputn == 1){ // temporary
-                    
+
                 }
-            }else if(inputnum.equals("4")){
+            }else if(inputnum.equals("4")){ // Displays all students entered into the database (studlist)
                 System.out.println("_____________________________");
                 System.out.println("All students: ");
                 studlist.printAll();
                 System.out.println("_____________________________");
-            }else if(inputnum.equals("5")){
+            }else if(inputnum.equals("5")){ // Displays an individual student based on user inputted last name or student number
                 System.out.println("press 1 to input student last name, 2 to input student number");
                 int intpmn = kb.nextInt();
                 kb.nextLine();
@@ -85,9 +84,9 @@ public class StudentListRunner
                 }if(intpmn != 1 && intpmn != 2){
                     System.out.println("Invalid input");
                 }
-            }else if(inputnum.equals("6")){
+            }else if(inputnum.equals("6")){ // Clears all entries in the list
                 studlist.clearList();
-            }else if(inputnum.equals("7")){
+            }else if(inputnum.equals("7")){ // Sorts the students by last name or by student number in descending order
                 int inptn;
                 String inpts;
                 System.out.print("Press 1 to sort by student number, 2 by last name:  ");
@@ -95,20 +94,13 @@ public class StudentListRunner
                 kb.nextLine();
                 System.out.println();
                 if(inptc == 1){
-                    System.out.print("Input student number:  ");
-                    inptn = kb.nextInt();
-                    kb.nextLine();
-                    System.out.println();
-                    studlist.sortStudents(inptn);
+                    studlist.sortStudents(1);
                 }
                 if(inptc == 2){
-                    System.out.print("Input student last name:  ");
-                    inpts = kb.nextLine();
-                    System.out.println();
-                    studlist.sortStudents(inpts);
+                    studlist.sortStudents(2);
                 }
-                
-            }else if (inputnum.equals("8")){
+
+            }else if (inputnum.equals("8")){ // Searches students by GPA or student number keywords
                 System.out.println("Options: ");
                 System.out.println("1: Find all students with GPA greater than or equal to your inputted GPA key");
                 System.out.println("2: Find all students with GPA less than or equal to your inputted GPA key");
@@ -138,11 +130,8 @@ public class StudentListRunner
                     kb.nextLine();
                     studlist.filterSearchStudentListLess(stumn);
                 }
-                
-                
-                
-                
-            }else if(inputnum.equals("quit")){
+
+            }else if(inputnum.equals("quit")){ // breaks out of loop
                 break;
             }else{
                 System.out.println("Invalid input");
@@ -166,7 +155,7 @@ public class StudentListRunner
         System.out.println("4: Display all students");
         System.out.println("5: Display student");
         System.out.println("6: Clear all students");
-        System.out.println("7: Sort students by last name");
+        System.out.println("7: Sort students");
         System.out.println("8: Search students by keys");
         System.out.println("Type \"quit\" to quit");
         System.out.println();

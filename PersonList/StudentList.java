@@ -1,8 +1,8 @@
 /**
- * Write a description of class StudentList here.
+ * StudentList has all 8 student list methods that are used to view/alter the student database.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Tal Dickman
+ * 16 November 2019
  */
 import java.util.*;
 public class StudentList
@@ -148,7 +148,7 @@ public class StudentList
         }
     }
 
-    public void filterSearchStudentListLess(int num){
+    public void filterSearchStudentListMore(int num){
         ArrayList<Student> studs = new ArrayList<Student>();
         for(int i = 0; i <studlist.size(); i++){
             if(studlist.get(i).getStuNumber() >= num){
@@ -156,10 +156,10 @@ public class StudentList
             }
         }
         printList(studs);
-        
+
     }
-    
-    public void filterSearchStudentListMore(int num){
+
+    public void filterSearchStudentListLess(int num){
         ArrayList<Student> studs = new ArrayList<Student>();
         for(int i = 0; i <studlist.size(); i++){
             if(studlist.get(i).getStuNumber() <= num){
@@ -167,10 +167,10 @@ public class StudentList
             }
         }
         printList(studs);
-        
+
     }
-    
-    public void filterSearchStudentListLess(double gpa){
+
+    public void filterSearchStudentListMore(double gpa){
         ArrayList<Student> studs = new ArrayList<Student>();
         for(int i = 0; i <studlist.size(); i++){
             if(studlist.get(i).getGpa() >= gpa){
@@ -178,10 +178,10 @@ public class StudentList
             }
         }
         printList(studs);
-        
+
     }
-    
-    public void filterSearchStudentListMore(double gpa){
+
+    public void filterSearchStudentListLess(double gpa){
         ArrayList<Student> studs = new ArrayList<Student>();
         for(int i = 0; i <studlist.size(); i++){
             if(studlist.get(i).getGpa() <= gpa){
@@ -189,7 +189,7 @@ public class StudentList
             }
         }
         printList(studs);
-        
+
     }
 
     public void printStudent(String lname){
@@ -212,27 +212,37 @@ public class StudentList
         studlist.clear();
     }
 
-    public void sortStudents(int stuNum){
-        ArrayList<Integer> nums = new ArrayList<Integer>();
-        
-    }
-
-    public void sortStudents(String lName){
-
-    }
-    
-    public static int[] bubblesort(int[] list){
-        for(int i = 0; i<list.length;i++){
-            for(int j = 1; j<list.length; j++){
-                if(list[j]<list[j-1]){
-                    int hole = list[j];
-                    list[j] = list[j-1];
-                    list[j-1] = hole;
+    public void sortStudents(int x){
+        if(x == 1){
+            for(int i=0; i<studlist.size(); i++){
+                for(int j=i+1; j<studlist.size(); j++){
+                    if ((studlist.get(i).getLast()).compareTo(studlist.get(j).getLast())>0){
+                        swap(i,j);
+                    }
                 }
             }
         }
-        return list;
+        
+        if(x == 2){
+            for(int i=0; i<studlist.size(); i++){
+                for(int j=i+1; j<studlist.size(); j++){
+                    if ((studlist.get(i).getStuNumber() > studlist.get(j).getStuNumber())){
+                        swap(i,j);
+                    }
+                }
+            }
+        }else{
+        
+        }
     }
+
+    public void swap(int i,int j){ // bubble sort
+        Student hole = studlist.get(j);
+        studlist.set(j,studlist.get(j-1));
+        studlist.set(j-1,hole);
+
+    }
+
     public void printList(String[] list){
         for(int i = 0;i<list.length;i++){
             System.out.print(list[i]);

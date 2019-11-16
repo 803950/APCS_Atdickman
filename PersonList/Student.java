@@ -1,8 +1,8 @@
 /**
- * Write a description of class Student here.
+ * The Student Class constructs students with certain data types, and has getter and setter methods
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Tal Dickman
+ * 16 November 2019
  */
 import java.lang.*;
 public class Student implements Comparable<Student>

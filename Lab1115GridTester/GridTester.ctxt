@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=GridTester
+comment1.params=
+comment1.target=void\ main()
+comment2.params=len\ max
+comment2.target=int[][]\ loadArray(int,\ int)
+comment3.params=mat
+comment3.target=int\ sumAll(int[][])
+comment4.params=mat
+comment4.target=int\ findGreatest(int[][])
+comment5.params=mat
+comment5.target=int\ numberOfGreatest(int[][])
+comment6.params=mat
+comment6.target=double\ findAvg(int[][])
+comment7.params=mat
+comment7.target=void\ printMatrix(int[][])
+numComments=8
