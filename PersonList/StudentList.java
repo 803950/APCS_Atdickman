@@ -8,7 +8,7 @@ import java.util.*;
 public class StudentList
 {
     // instance variables - replace the example below with your own
-    ArrayList <Student> studlist = new ArrayList <Student>();
+    ArrayList<Student> studlist = new ArrayList<Student>();
     Scanner kb = new Scanner(System.in);
     /**
      * Constructor for objects of class StudentList
@@ -74,17 +74,18 @@ public class StudentList
     }
 
     public void editStudentList(String lName){
-        boolean temp = false;
-        int num = 0;
-        for(int i = 0; i < studlist.size() && (temp == false); i++){
-            if(studlist.get(i).getLast().equals(lName)){
-                temp = true;
-                num = i;
+        ArrayList<Integer> lnums = new ArrayList<Integer>();
+        for(int i = 0; i < studlist.size(); i++){
+            if(studlist.get(i).getLast().indexOf(lName.trim()) != -1){
+                lnums.add(i);
             }
         }
-        System.out.println("Selected student:  ");
-        printStudent(studlist.get(num));
-        if(temp == true){
+        if(lnums.size() == 0){
+            System.out.println("There are no students with this last name.");
+        }
+        if(lnums.size() == 1){
+            System.out.println("Selected student:  ");
+            printStudent(studlist.get(lnums.get(0)));
             System.out.print("New student number:  ");
             int newNum = kb.nextInt();
             System.out.println(); //
@@ -92,13 +93,15 @@ public class StudentList
             double newGPA = kb.nextDouble();
             System.out.println();
             kb.nextLine();
-            String name = studlist.get(num).getFullName();
+            String name = studlist.get(lnums.get(0)).getFullName();
             Student newstudent = new Student(name, newNum, newGPA);
             newstudent.parseUserInput(newstudent.getFullName());
-            studlist.remove(num);
+            studlist.remove(lnums.get(0));
             studlist.add(newstudent);
         }
-
+        if(lnums.size() > 1){
+            System.out.println("There are " + lnums.size() + " students with that last name.");
+        }
     }
 
     public void printList(ArrayList<Student> studlist){
@@ -205,13 +208,31 @@ public class StudentList
     }
 
     public void clearList(){
+        System.out.println("Clearing list...");
         studlist.clear();
     }
 
-    public void sortStudents(){
-
+    public void sortStudents(int stuNum){
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        
     }
 
+    public void sortStudents(String lName){
+
+    }
+    
+    public static int[] bubblesort(int[] list){
+        for(int i = 0; i<list.length;i++){
+            for(int j = 1; j<list.length; j++){
+                if(list[j]<list[j-1]){
+                    int hole = list[j];
+                    list[j] = list[j-1];
+                    list[j-1] = hole;
+                }
+            }
+        }
+        return list;
+    }
     public void printList(String[] list){
         for(int i = 0;i<list.length;i++){
             System.out.print(list[i]);

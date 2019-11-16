@@ -5,7 +5,7 @@
  * @author tdickman
  * @version 1025
  */
-import java.util.Scanner; 
+import java.util.Scanner;
 public class StudentListRunner
 { 
     public static void main() 
@@ -88,7 +88,26 @@ public class StudentListRunner
             }else if(inputnum.equals("6")){
                 studlist.clearList();
             }else if(inputnum.equals("7")){
-                studlist.sortStudents();
+                int inptn;
+                String inpts;
+                System.out.print("Press 1 to sort by student number, 2 by last name:  ");
+                int inptc = kb.nextInt();
+                kb.nextLine();
+                System.out.println();
+                if(inptc == 1){
+                    System.out.print("Input student number:  ");
+                    inptn = kb.nextInt();
+                    kb.nextLine();
+                    System.out.println();
+                    studlist.sortStudents(inptn);
+                }
+                if(inptc == 2){
+                    System.out.print("Input student last name:  ");
+                    inpts = kb.nextLine();
+                    System.out.println();
+                    studlist.sortStudents(inpts);
+                }
+                
             }else if (inputnum.equals("8")){
                 System.out.println("Options: ");
                 System.out.println("1: Find all students with GPA greater than or equal to your inputted GPA key");
