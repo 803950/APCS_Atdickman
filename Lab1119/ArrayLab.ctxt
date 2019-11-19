@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=ArrayLab
+comment1.params=
+comment1.target=ArrayLab()
+comment2.params=
+comment2.target=void\ main()
+comment3.params=arr
+comment3.target=int[][]\ loadArray(int[][])
+comment4.params=matrix
+comment4.target=void\ printMat(int[][])
+comment5.params=matrix
+comment5.target=void\ getMean(int[][])
+comment6.params=arr
+comment6.target=int\ getSum(int[])
+comment7.params=matrix
+comment7.target=void\ getMedian(int[][])
+comment8.params=matrix
+comment8.target=void\ getTotalMean(int[][])
+comment9.params=matrix
+comment9.target=void\ getMode(int[][])
+numComments=10
