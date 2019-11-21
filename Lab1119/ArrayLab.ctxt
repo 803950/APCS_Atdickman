@@ -2,6 +2,10 @@
 comment0.target=ArrayLab
 comment1.params=
 comment1.target=ArrayLab()
+comment10.params=matrix
+comment10.target=void\ printMode(int[][])
+comment11.params=nums
+comment11.target=int\ modeOfRow(int[])
 comment2.params=
 comment2.target=void\ main()
 comment3.params=arr
@@ -18,4 +22,4 @@ comment8.params=matrix
 comment8.target=void\ getTotalMean(int[][])
 comment9.params=matrix
 comment9.target=void\ getMode(int[][])
-numComments=10
+numComments=12

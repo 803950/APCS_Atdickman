@@ -15,13 +15,18 @@ public class ArrayLab
     public static void main(){
         int len = 10; // Square dimension of 2D array
         int[][] matrix = new int[len][len];
+        System.out.println();
+        System.out.println("Randomly generated 2D array:  ");
         matrix = loadArray(matrix);
         printMat(matrix);
+        System.out.println();
         getMean(matrix);
+        getTotalMean(matrix);
         System.out.println();
         getMedian(matrix);
-        getTotalMean(matrix);
-        getMode(matrix);
+        System.out.println();
+        System.out.println();
+        printMode(matrix);
     }
 
     public static int[][] loadArray(int[][] arr){
@@ -106,5 +111,40 @@ public class ArrayLab
             }
             System.out.println("The mode of line " + (r+1) + ":  " + mode);
         }
+
     }
+    public static void printMode(int[][] matrix){
+        for(int r = 0; r<matrix.length; r++){
+            System.out.printf("Mode of line %d is %d", r+1, modeOfRow(matrix[r]));
+            System.out.println();
+        }
+    }
+
+    public static int modeOfRow(int[] nums)
+    {
+        Arrays.sort(nums);
+        int counter2 = 0;
+        int counter1 = 0;
+        int maxi =0;
+        int maxf =0;
+        for(int r = 0; r< nums.length; r++){
+            maxi = nums[r];
+            counter1 = 1;
+            for(int c = r+1; c<nums.length; c++){
+                if(maxi == nums[c]){
+                    counter1++;
+                }
+            }
+            if(counter1 > counter2){
+                maxf = maxi;
+                counter2 = counter1;
+            }
+            else if(counter2 == counter1){
+                maxf = Math.min(maxf,maxi);
+            }
+        }
+        return maxf;
+    }
+    
+    
 }
