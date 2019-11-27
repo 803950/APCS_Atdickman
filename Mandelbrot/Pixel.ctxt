@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Pixel
+comment1.params=f\ x\ y\ size
+comment1.target=Pixel(java.awt.Graphics,\ int,\ int,\ int)
+comment2.params=f\ x\ y\ size
+comment2.target=void\ newPixel(java.awt.Graphics,\ int,\ int,\ int)
+numComments=3
