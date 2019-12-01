@@ -357,7 +357,11 @@ public class SimplePicture implements DigitalPicture
    for (int row = 0; row < height; row++) 
      for (int col = 0; col < width; col++) 
        pixelArray[row][col] = new Pixel(this,col,row);
-    
+   //activity 4********************
+   DigitalPicture p1 = new SimplePicture();
+   DigitalPicture p2 = new Picture();
+   SimplePicture p3 = new Picture();
+   //activity 4********************
    return pixelArray;
  }
  
