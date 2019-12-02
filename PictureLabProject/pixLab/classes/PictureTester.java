@@ -95,7 +95,23 @@ public class PictureTester
         temple.mirrorTemple();
         temple.explore();
     }
-
+    
+    /** Method to test mirrorArms */
+    public static void testMirrorArms(){
+        Picture snowman = new Picture("snowman.jpg");
+        snowman.explore();
+        snowman.mirrorArms();
+        snowman.explore();
+    }
+    
+    /** Method to test mirrorGull */
+    public static void testMirrorGull(){
+        Picture seagull = new Picture("seagull.jpg");
+        seagull.explore();
+        seagull.mirrorGull();
+        seagull.explore();
+    }
+    
     /** Method to test the collage method */
     public static void testCollage()
     {
@@ -103,7 +119,13 @@ public class PictureTester
         canvas.createCollage();
         canvas.explore();
     }
-
+    
+    /** Method to test new copy method */
+    public static void testCopy(){
+        Picture canvas = new Picture("640*480.jpg");
+        canvas.createCollage();
+        canvas.explore();
+    }
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {

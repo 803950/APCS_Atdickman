@@ -270,15 +270,59 @@ public class Picture extends SimplePicture
             // loop from 13 to just before the mirror point
             for (int col = 13; col < mirrorPoint; col++)
             {
-
+                count ++; // total count should equal 18410
                 leftPixel = pixels[row][col];      
                 rightPixel = pixels[row]                       
                 [mirrorPoint - col + mirrorPoint];
                 rightPixel.setColor(leftPixel.getColor());
             }
         }
+        System.out.println("Number of executions:  " + count);
     }
-
+    
+    /** Mirrors part of the snowman's arms */
+    public void mirrorArms(){
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel upperPixel = null;
+        Pixel lowerPixel = null;
+        int length = pixels.length;
+        int width = pixels[0].length;
+        int ci = 100;
+        int cf = 296;
+        int ri = 163;
+        int rf = 200;
+        for (int row = ri; row < rf; row++)
+        {
+            for (int col = ci; col < cf; col++)
+            {
+                upperPixel = pixels[row][col];
+                lowerPixel = pixels[390-row][col];
+                lowerPixel.setColor(upperPixel.getColor());
+            }
+        }
+    }
+    
+    /** Mirrors a seagull */
+    public void mirrorGull(){
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel leftPixel = null;
+        Pixel rightPixel = null;
+        int ri = 230;
+        int rf = 330;
+        int ci = 230;
+        int cf = 345;
+        int width = 0;
+        for (int row = ri; row < rf; row++)
+        {
+            for (int col = ci; col<cf; col++)
+            {
+                leftPixel = pixels[row][col];
+                rightPixel = pixels[row-col/20][rf+ri - col - 150];
+                rightPixel.setColor(leftPixel.getColor());
+            }
+        } 
+    }
+    
     /** copy from the passed fromPic to the
      * specified startRow and startCol in the
      * current picture
@@ -309,7 +353,30 @@ public class Picture extends SimplePicture
             }
         }   
     }
-
+    
+    public void copy(Picture fromPic, 
+    int startRow, int startCol, int fromstartrow, int fromendrow, int fromstartcol, int fromendcol)
+    {
+        Pixel fromPixel = null;
+        Pixel toPixel = null;
+        Pixel[][] toPixels = this.getPixels2D();
+        Pixel[][] fromPixels = fromPic.getPixels2D();
+        for (int fromRow = 0, toRow = startRow; 
+        fromRow < fromPixels.length &&
+        toRow < toPixels.length; 
+        fromRow++, toRow++)
+        {
+            for (int fromCol = fromstartcol, toCol = startCol; 
+            fromCol < fromendcol &&
+            toCol < toPixels[0].length;  
+            fromCol++, toCol++)
+            {
+                fromPixel = fromPixels[fromRow][fromCol];
+                toPixel = toPixels[toRow][toCol];
+                toPixel.setColor(fromPixel.getColor());
+            }
+        }   
+    }
     /** Method to create a collage of several pictures */
     public void createCollage()
     {
@@ -325,6 +392,15 @@ public class Picture extends SimplePicture
         this.copy(flower2,500,0);
         this.mirrorVertical();
         this.write("collage.jpg");
+    }
+    
+    public void myCollage(){
+        Picture rat = new Picture("rat.jpg");
+        Picture cat = new Picture("cat.jpg");
+        this.copy(rat,50,10);
+        cat.zeroBlue();
+        
+        this.copy(cat, 
     }
 
     /** Method to show large changes in color 
