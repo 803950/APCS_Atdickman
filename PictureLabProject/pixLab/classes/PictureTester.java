@@ -6,6 +6,7 @@
  * 
  * @author Barbara Ericson 
  */
+import java.util.*;
 public class PictureTester
 {
     /** Method to test zeroBlue */
@@ -49,7 +50,7 @@ public class PictureTester
         mandelbrot.mirrorVertical();
         mandelbrot.explore();
     }
-    
+
     /** Method to test mirrorHorizontal*/
     public static void testMirrorHorizontal(){
         Picture beach = new Picture("beach.jpg");
@@ -57,14 +58,16 @@ public class PictureTester
         beach.mirrorHorizontal();
         beach.explore();
     }
+
     /** Method to test mirrorHorizontalBotToTop*/
-    
+
     public static void testMirrorHorizontalBotToTop(){
         Picture beach = new Picture("beach.jpg");
         beach.explore();
         beach.mirrorHorizontalBotToTop();
         beach.explore();
     }
+
     /** Method to test mirrorVerticalRightToLeft*/
     public static void testMirrorVerticalRightToLeft(){
         Picture mandelbrot = new Picture("mandelbrot.jpg");
@@ -72,6 +75,7 @@ public class PictureTester
         mandelbrot.mirrorVerticalRightToLeft();
         mandelbrot.explore();
     }
+
     /** Method to test mirrorDiagonal*/
     public static void testMirrorDiagonal(){
         Picture beach = new Picture("beach.jpg");
@@ -79,6 +83,7 @@ public class PictureTester
         beach.mirrorDiagonal();
         beach.explore();
     }
+
     /** Method to test fixUnderwater*/
     public static void testFixUnderwater(){
         Picture water = new Picture("water.jpg");
@@ -86,7 +91,7 @@ public class PictureTester
         water.fixUnderwater();
         water.explore();
     }
-    
+
     /** Method to test mirrorTemple */
     public static void testMirrorTemple()
     {
@@ -95,7 +100,7 @@ public class PictureTester
         temple.mirrorTemple();
         temple.explore();
     }
-    
+
     /** Method to test mirrorArms */
     public static void testMirrorArms(){
         Picture snowman = new Picture("snowman.jpg");
@@ -103,7 +108,7 @@ public class PictureTester
         snowman.mirrorArms();
         snowman.explore();
     }
-    
+
     /** Method to test mirrorGull */
     public static void testMirrorGull(){
         Picture seagull = new Picture("seagull.jpg");
@@ -111,7 +116,7 @@ public class PictureTester
         seagull.mirrorGull();
         seagull.explore();
     }
-    
+
     /** Method to test the collage method */
     public static void testCollage()
     {
@@ -119,13 +124,21 @@ public class PictureTester
         canvas.createCollage();
         canvas.explore();
     }
-    
+
     /** Method to test new copy method */
     public static void testCopy(){
         Picture canvas = new Picture("640*480.jpg");
         canvas.createCollage();
         canvas.explore();
     }
+
+    /** Method to test myCollage*/
+    public static void testMyCollage(){
+        Picture canvas = new Picture("640*480.jpg");
+        canvas.myCollage();
+        canvas.explore();
+    }
+
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {
@@ -161,4 +174,5 @@ public class PictureTester
         //testClearBlueOverValue(200);
         //testGetAverageForColumn(0);
     }
+
 }

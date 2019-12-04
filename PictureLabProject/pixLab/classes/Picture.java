@@ -400,7 +400,8 @@ public class Picture extends SimplePicture
         this.copy(rat,50,10);
         cat.zeroBlue();
         
-        this.copy(cat, 
+        this.copy(cat,20,20,500,500,500,500);
+        this.copy(rat,20,20,500,500,500,500);
     }
 
     /** Method to show large changes in color 
