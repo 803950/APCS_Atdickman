@@ -3,13 +3,13 @@ import java.io.*;
 import java.awt.image.*;
 public class Display{
     public static void main(String[] args) throws Exception{
-        int h = 987;
-        int w = 1597;
+        int h = 8000;
+        int w = 8000;
         int iterations = 100;
         Pixel[][] picture = new Pixel[h][w];
         for(int i = 0; i<h; i++){
             for(int j = 0; j<w; j++){
-                if(iterate(i,j,iterations) == 1){
+                if(iterate((float)(i-w/2f)/(h/3),(float)(j-h/2f)/(w/3),iterations) == 0){
                     picture[i][j] = new Pixel(0,0,0);
                 }else{
                     picture[i][j] = new Pixel(255,255,255);
@@ -19,24 +19,26 @@ public class Display{
         outputPicture(picture);
     }
 
-    public static int iterate(int a, int b, int iterations){
+    public static int iterate(float a, float b, int iterations){
         int convergence = 0;
-        Complex complex = new Complex(0,0); // initial complex number = 0+0i
-        Complex c = new Complex(a,b);
-        Complex zf = iterator(complex, c, iterations);
-        if(zf.abs() < 4){ // the number converges
+        float cx = a;
+        float cy = b;
+        int i = 0;
+        for(;i<iterations;i++){
+            float nx = a*a - b*b + cx;
+            float ny = 2*a*b + cy;
+            a = nx;
+            b = ny;
+            if(a*a + b*b > 4){
+                break;
+            }
+        }
+        if(i == iterations){
+            convergence = 0;
+        }else{
             convergence = 1;
         }
         return convergence;
-    }
-
-    public static Complex iterator(Complex zi, Complex c, int iterations){
-        if(iterations == 1){
-            return zi;
-        }else{
-            iterator(zi.times(zi).plus(c), c, iterations - 1);
-        }
-        return zi;
     }
 
     public static void outputPicture(Pixel[][] picture) throws Exception{
