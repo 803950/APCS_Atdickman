@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Complex
+comment1.params=real\ imag
+comment1.target=Complex(double,\ double)
+comment10.params=
+comment10.target=double\ im()
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=double\ abs()
+comment4.params=b
+comment4.target=Complex\ plus(Complex)
+comment5.params=b
+comment5.target=Complex\ minus(Complex)
+comment6.params=b
+comment6.target=Complex\ times(Complex)
+comment7.params=alpha
+comment7.target=Complex\ scale(double)
+comment8.params=
+comment8.target=Complex\ conjugate()
+comment9.params=
+comment9.target=double\ re()
+numComments=11

@@ -86,7 +86,17 @@ public class IntArrayWorkerTester
         total = worker.getColTotal(nums2, 2);
         System.out.println("Total for column 2 should be 9 and is " + total);
     }
-
+    
+    public static void testLab1204(){
+        IntArrayWorker worker = new IntArrayWorker();
+        int[][] nums = new int[10][10];
+        worker.loadEvensOdds(nums);
+        System.out.println("Initial array:");
+        worker.print2DArray(nums);
+        worker.flipVertical(nums);
+        System.out.println("Flipped array:");
+        worker.print2DArray(nums);
+    }
     public static void main(String[] args)
     {
 

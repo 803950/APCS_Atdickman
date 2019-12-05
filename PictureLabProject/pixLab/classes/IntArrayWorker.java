@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class IntArrayWorker
 {
     /** two dimensional matrix */
@@ -133,8 +133,7 @@ public class IntArrayWorker
     
     
     /** Method to test Lab 1204 */
-    public int[][] loadEvensOdd(int[][] a){
-
+    public static int[][] loadEvensOdds(int[][] a){
         Random rand = new Random();
         for(int i = 0; i<a.length; i++){
             for(int j = 0; j<a[i].length; j++){
@@ -162,14 +161,16 @@ public class IntArrayWorker
         }
         return a;
     }
+    
     public void flipVertical(int[][] numarray){
         int leftnum = 0;
         int rightnum = 0;
+        int temp = 0;
         for(int r = 0; r<numarray.length; r++){
-            for(int c = 0; c<numarray[r].length; c++){
-                if(numarray[r][c]%2 == 0){ // if it is even
-
-                }
+            for(int c = 0; c<numarray[r].length/2; c++){
+                temp = numarray[r][c];
+                numarray[r][c] = numarray[r][numarray[r].length - 1 - c];
+                numarray[r][numarray[r].length - 1 - c] = temp;
             }
         }
     }
@@ -182,4 +183,5 @@ public class IntArrayWorker
             System.out.println();
         }
     }
+    
 }
