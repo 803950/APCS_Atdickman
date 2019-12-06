@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Display
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
+comment1.params=
+comment1.target=void\ main()
 comment2.params=a\ b\ iterations
-comment2.target=int\ iterate(float,\ float,\ int)
+comment2.target=double\ iterate(float,\ float,\ int)
 comment3.params=picture
 comment3.target=void\ outputPicture(Pixel[][])
 numComments=4
