@@ -14,7 +14,7 @@ public class Display{
                 if(convergence == 0.0){ // determines black regions
                     picture[i][j] = new Pixel(0,0,0);
                 }else{
-                    picture[i][j] = new Pixel((int)(255*convergence),255,(int)(210*convergence)); // choose colors here
+                    picture[i][j] = new Pixel((int)(255*convergence),(int)(255*convergence),(int)(255*convergence)); // choose colors here
                 }
             }
         }
