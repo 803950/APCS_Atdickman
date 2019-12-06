@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.target=Display
 comment1.params=
-comment1.target=void\ main()
-comment2.params=a\ b\ iterations
-comment2.target=double\ iterate(float,\ float,\ int)
-comment3.params=picture
-comment3.target=void\ outputPicture(Pixel[][])
-numComments=4
+comment1.target=void\ mandelbrot()
+comment2.params=
+comment2.target=void\ julia()
+comment3.params=a\ b\ iterations
+comment3.target=double\ iterateM(float,\ float,\ int)
+comment4.params=a\ b\ iterations
+comment4.target=double\ iterateJ(float,\ float,\ int)
+comment5.params=picture
+comment5.target=void\ outputPicture(Pixel[][])
+numComments=6
