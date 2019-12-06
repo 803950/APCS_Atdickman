@@ -361,7 +361,7 @@ public class Picture extends SimplePicture
         Pixel toPixel = null;
         Pixel[][] toPixels = this.getPixels2D();
         Pixel[][] fromPixels = fromPic.getPixels2D();
-        for (int fromRow = 0, toRow = startRow; 
+        for (int fromRow = fromstartrow, toRow = startRow; 
         fromRow < fromPixels.length &&
         toRow < toPixels.length; 
         fromRow++, toRow++)
@@ -396,12 +396,8 @@ public class Picture extends SimplePicture
     
     public void myCollage(){
         Picture rat = new Picture("rat.jpg");
-        Picture cat = new Picture("cat.jpg");
-        this.copy(rat,50,10);
-        cat.zeroBlue();
-        
-        this.copy(cat,20,20,500,500,500,500);
-        this.copy(rat,20,20,500,500,500,500);
+        this.copy(rat,0,0,50,600,500,1000);
+        this.write("collage.jpg");
     }
 
     /** Method to show large changes in color 

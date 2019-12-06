@@ -2,10 +2,10 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.awt.image.*;
 public class Display{
-    private static int h = 10000;
-    private static int w = 10000;
+    private static int h = 1000;
+    private static int w = 1000;
     public static void mandelbrot() throws Exception{
-        int iterations = 100;
+        int iterations = 10000;
         Pixel[][] picture = new Pixel[h][w];
         double convergence = 0;
         for(int i = 0; i<h; i++){
@@ -91,6 +91,6 @@ public class Display{
         BufferedImage image = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
         image.setRGB(0,0,w,h,pixels,0,w);
         ImageIO.write(image, "bmp", new File("output.bmp") );
-        System.out.println("image created");   
+        System.out.println("image created");
     }
 }
