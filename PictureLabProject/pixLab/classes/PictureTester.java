@@ -117,23 +117,6 @@ public class PictureTester
         seagull.explore();
     }
 
-    /** Method to test the collage method */
-    public static void testCollage()
-    {
-        Picture canvas = new Picture("2000x2000.jpg");
-        Picture rat = new Picture("rat.jpg");
-        rat.explore();
-        canvas.myCollage();
-        canvas.explore();
-    }
-
-    /** Method to test new copy method */
-    public static void testCopy(){
-        Picture canvas = new Picture("640*480.jpg");
-        canvas.createCollage();
-        canvas.explore();
-    }
-
     /** Method to test myCollage*/
     public static void testMyCollage(){
         Picture canvas = new Picture("2000x2000.jpg");
@@ -144,11 +127,13 @@ public class PictureTester
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {
-        Picture swan = new Picture("swan.jpg");
-        swan.edgeDetection(10);
-        swan.explore();
+        Picture pic = new Picture("Jupiter.jpg");
+        pic.explore();
+        //swan.edgeDetection(20); // left to right
+        //swan.explore();
+        pic.edgeDetection2(30); // top to bottom
+        pic.explore();
     }
-
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
