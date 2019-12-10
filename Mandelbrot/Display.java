@@ -2,87 +2,41 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.awt.image.*;
 public class Display{
-    private static int h = 1000;
-    private static int w = 1000;
-    public static void mandelbrot() throws Exception{
-        int iterations = 10000;
+    static final int h = 2000; // make upper case
+    static int w = 1000;
+    static int iterations = 100;
+
+    public static void main(String[] args) throws Exception{
+        generateMandelbrot();
+        System.out.println("Image created.");
+    }
+
+    public static void generateMandelbrot()throws Exception{
+      Complex complix;
         Pixel[][] picture = new Pixel[h][w];
-        double convergence = 0;
         for(int i = 0; i<h; i++){
             for(int j = 0; j<w; j++){
-                convergence = iterateM((float)(i-w/2f)/(h/3),(float)(j-h/2f)/(w/3),iterations);
-                if(convergence == 0.0){ // determines black regions
-                    picture[i][j] = new Pixel(0,0,0);
-                }else{
-                    picture[i][j] = new Pixel((int)(255*convergence),(int)(255*convergence),(int)(255*convergence)); // choose colors here
-                }
+              complix = new Complex((i-(14*h/20.0))/(w/3.0),(j-(w/2.0))/(h/3.0*w/h)); // funky numbers to center and scale the figure
+              int onoff = (int)(iterate(complix)*255);
+              picture[i][j] = new Pixel(onoff,onoff,onoff);
             }
         }
         outputPicture(picture);
     }
 
-        public static void julia() throws Exception{
-        int iterations = 10;
-        Pixel[][] picture = new Pixel[h][w];
-        double convergence = 0;
-        for(int i = 0; i<h; i++){
-            for(int j = 0; j<w; j++){
-                convergence = iterateJ((float)(i-w/2f)/(h/3),(float)(j-h/2f)/(w/3),iterations);
-                if(convergence == 0.0){ // determines black regions
-                    picture[i][j] = new Pixel(0,0,0);
-                }else{
-                    picture[i][j] = new Pixel((int)(255*convergence),255,(int)(210*convergence)); // choose colors here
-                }
-            }
+    public static double iterate(Complex num){
+      Complex numi = num;
+      for(int convergence = 0; convergence<iterations; convergence++){
+        num = num.times(num).plus(numi);
+        if(num.abs()>4){
+          return 1-convergence/(double)iterations;
         }
-        outputPicture(picture);
-    }
-    public static double iterateM(float a, float b, int iterations){
-        double convergence = 0.0;
-        float cx = a;
-        float cy = b;
-        int i = 0;
-        for(;i<iterations;i++){
-            float nx = a*a - b*b + cx;
-            float ny = 2*a*b + cy;
-            a = nx;
-            b = ny;
-            if(a*a + b*b > 4){
-                convergence = 4.0/(a*a + b*b);
-                break;
-            }
-        }
-        if(i == iterations){
-            convergence = 0.0;
-        }
-        return convergence;
-    }
-
-    
- 
-    public static double iterateJ(float a, float b, int iterations){
-        double convergence = 0.0;
-        float cx = a;
-        float cy = b;
-        int i = 0;
-        for(;i<iterations;i++){
-            float nx = a*a*a*a*a*a*a - 21*a*a*a*a*a*b*b + 35*a*a*a*b*b*b*b - 7*a*b*b*b*b*b*b + cx;
-            float ny = -1*b*b*b*b*b*b*b + 21*a*a*b*b*b*b*b - 35*a*a*a*a*b*b*b +7*a*a*a*a*a*a*b + cy;
-            a = nx;
-            b = ny;
-            if(a*a + b*b > 4){
-                convergence = 4.0/(a*a + b*b);
-                break;
-            }
-        }
-        if(i == iterations){
-            convergence = 0.0;
-        }
-        return convergence;
+      }
+      return 0;
     }
 
     public static void outputPicture(Pixel[][] picture) throws Exception{
-        int[] pixels = new int[h*w];
+        int[] pixels = new int[w*h];
         for(int i = 0; i<h; i++){
             for(int j = 0; j<w; j++){
                 pixels[i*w + j] = picture[i][j].getColorInt();
@@ -90,7 +44,6 @@ public class Display{
         }
         BufferedImage image = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
         image.setRGB(0,0,w,h,pixels,0,w);
-        ImageIO.write(image, "bmp", new File("output.bmp") );
-        System.out.println("image created");
+        ImageIO.write(image, "bmp", new File("output.bmp") ); 
     }
 }
