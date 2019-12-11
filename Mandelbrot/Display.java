@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import java.awt.image.*;
 import java.util.*;
+import java.lang.Math;
 public class Display{
     static final int h = 1000; // make upper case
     static int w = 1000;
