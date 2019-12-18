@@ -4,13 +4,13 @@ import java.awt.image.*;
 import java.util.*;
 import java.lang.Math;
 public class Display{
-    static final int h = 4800; // make upper case
-    static int w = 1200;
+    static final int h = 1000; // make upper case
+    static int w = 1000;
     static int iterations = 100;
 
     public static void main(String[] args) throws Exception{
-        generateMandelbrotZoom(0.0,0.0,1.0,1.0);
-        generateMandelbrot();
+        generateMandelbrotZoom(0.5,0.0,1.0,0.5);
+        //generateMandelbrot();
         System.out.println("Image created.");
     }
 
@@ -29,12 +29,12 @@ public class Display{
     
     public static void generateMandelbrotZoom(double ri, double ci, double rf, double cf)throws Exception{
         Complex complix;
-        int newh = (int)(h*(rf-ri));
-        int neww = (int)(w*(cf-ci));
+        double scalarh = (rf-ri);
+        double scalarw = (cf-ci);
         Pixel[][] picture = new Pixel[h][w];
-        for(int i = 0; i<newh; i++){
-            for(int j = 0; j<neww; j++){
-                complix = new Complex((i-(14*newh/20.0))/(neww/3.0),(j-(neww/2.0))/(h/3.0*neww/newh)); // funky numbers to center and scale the figure
+        for(int i = 0; i<h; i++){
+            for(int j = 0; j<w; j++){
+                complix = new Complex((i-(14*h/20.0))*scalarh/((w/3.0)),(j-(w/2.0))*scalarw/((h/3.0*w/h))); // funky numbers to center and scale the figure
                 int onoff = (int)(iterate(complix)*255);
                 picture[i][j] = new Pixel(onoff,onoff,onoff);
             }
