@@ -9,7 +9,7 @@ public class Display{
     static int iterations = 100;
 
     public static void main(String[] args) throws Exception{
-        generateMandelbrotZoom(0.5,0.0,1.0,0.5);
+        generateMandelbrotZoom(0.0,0.0,1,1);
         //generateMandelbrot();
         System.out.println("Image created.");
     }
@@ -26,7 +26,7 @@ public class Display{
         }
         outputPicture(picture);
     }
-    
+
     public static void generateMandelbrotZoom(double ri, double ci, double rf, double cf)throws Exception{
         Complex complix;
         double scalarh = (rf-ri);
@@ -34,14 +34,13 @@ public class Display{
         Pixel[][] picture = new Pixel[h][w];
         for(int i = 0; i<h; i++){
             for(int j = 0; j<w; j++){
-                complix = new Complex((i-(14*h/20.0))*scalarh/((w/3.0)),(j-(w/2.0))*scalarw/((h/3.0*w/h))); // funky numbers to center and scale the figure
+                complix = new Complex((i-(14*h/20.0))*scalarh/((w/3.0))+scalarh,(j-(w/2.0))*scalarw/((h/3.0*w/h))+scalarw); // funky numbers to center and scale the figure
                 int onoff = (int)(iterate(complix)*255);
                 picture[i][j] = new Pixel(onoff,onoff,onoff);
             }
         }
         outputPicture(picture);
     }
-    
 
     public static double iterate(Complex num){
         Complex numi = num;
