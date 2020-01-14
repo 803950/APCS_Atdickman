@@ -9,8 +9,9 @@ public class Display{
     static int iterations = 100;
 
     public static void main(String[] args) throws Exception{
-        generateMandelbrotZoom(0.0,0.0,1,1);
+        //generateMandelbrotZoom(0.0,0.0,1,0.1);
         //generateMandelbrot();
+        generateMandelbrotZoom2(0.0,0.0,0.1);
         System.out.println("Image created.");
     }
 
@@ -38,10 +39,40 @@ public class Display{
                 int onoff = (int)(iterate(complix)*255);
                 picture[i][j] = new Pixel(onoff,onoff,onoff);
             }
+            
         }
         outputPicture(picture);
     }
+    
+    public static void generateMandelbrotZoom2(double ri, double ci, double len)throws Exception{
+        int dim = 100;
+        Complex complix;
+        Pixel[][] picture = new Pixel[dim][dim];
 
+        double newh = len;
+        double neww = len;
+        int p = 0;
+        int q = 0;
+        for(double i = ri; i<ri+newh && p<dim; i+= newh/dim, p++){
+            for(double j = ci; j<ci+neww && q<dim; j+= neww/dim, q++){
+                complix = new Complex((i-(14*h/20.0))/(w/3.0),(j-(w/2.0))/(h/3.0*w/h)); // funky numbers to center and scale the figure
+                int onoff = (int)(iterate(complix)*255);
+                picture[p][q] = new Pixel(onoff,onoff,onoff);
+            }
+        }
+        
+        outputZoomedPicture(picture, dim);
+    }
+    
+    public static double makeLessThanOne(int n){
+        double k = (double)n;
+        while(k>1){
+            k=k/10;
+        }
+        System.out.print(k);
+        return k;
+    }
+    
     public static double iterate(Complex num){
         Complex numi = num;
         for(int convergence = 0; convergence<iterations; convergence++){
@@ -62,6 +93,18 @@ public class Display{
         }
         BufferedImage image = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
         image.setRGB(0,0,w,h,pixels,0,w);
+        ImageIO.write(image, "bmp", new File("output.bmp") ); 
+    }
+    
+    public static void outputZoomedPicture(Pixel[][] picture,int dim) throws Exception{
+        int[] pixels = new int[dim*dim];
+        for(int i = 0; i<2; i++){
+            for(int j = 0; j<2; j++){
+                pixels[i*dim + j] = picture[i][j].getColorInt();
+            }
+        }
+        BufferedImage image = new BufferedImage(dim,dim,BufferedImage.TYPE_INT_RGB);
+        image.setRGB(0,0,dim,dim,pixels,0,dim);
         ImageIO.write(image, "bmp", new File("output.bmp") ); 
     }
 }
