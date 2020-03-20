@@ -4,8 +4,8 @@ import java.awt.image.*;
 import java.util.*;
 import java.lang.Math;
 public class Display{
-    static final int h =1000; // make upper case
-    static int w = 1000;
+    static final int h =7000; // make upper case
+    static int w = 7000;
     static int iterations = 800;
 
     public static void main() throws Exception{
@@ -20,12 +20,13 @@ public class Display{
         //generateMandelbrotZoom(0.10725556,0.49740059,0.0000002); // tunnel
         //generateMandelbrotZoom(0.107255653,0.497400682,0.000000018); // hole
         //generateMandelbrotZoom(0.2,0.0,1.0); // for Unconnected Julia Set
-        //generateMandelbrotZoom(0.1072556600,0.4974006898,0.000000003); // mandeblrot inside hole
+        generateMandelbrotZoom(0.1072556600,0.4974006898,0.000000003); // mandeblrot inside hole
         //generateMandelbrotZoom(0.74934,0.29430,0.000022); // spiky mini mandelbrot
         System.out.println("Image created.");
     }
     
     public static void generateMandelbrotZoom(double ri, double ci, double l)throws Exception{
+        iterations = -(int)(90.0*Math.log(l));
         Complex complix;
         Pixel[][] picture = new Pixel[h][w];
         int a;
