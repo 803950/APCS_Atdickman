@@ -6,7 +6,7 @@ import java.lang.Math;
 public class Display{
     static final int h =1000; // make upper case
     static int w = 1000;
-    static int iterations = 100;
+    static int iterations = 800;
 
     public static void main() throws Exception{
         //generateMandelbrotZoom(0.0,0.0,1.0); // full
@@ -19,7 +19,9 @@ public class Display{
         //generateMandelbrotZoom(0.10725,0.49740,0.0011); // spiky tail
         //generateMandelbrotZoom(0.10725556,0.49740059,0.0000002); // tunnel
         //generateMandelbrotZoom(0.107255653,0.497400682,0.000000018); // hole
-        generateMandelbrotZoom(0.2,0.0,1.0); // for Unconnected Julia Set
+        //generateMandelbrotZoom(0.2,0.0,1.0); // for Unconnected Julia Set
+        //generateMandelbrotZoom(0.1072556600,0.4974006898,0.000000003); // mandeblrot inside hole
+        //generateMandelbrotZoom(0.74934,0.29430,0.000022); // spiky mini mandelbrot
         System.out.println("Image created.");
     }
     
@@ -42,10 +44,10 @@ public class Display{
                 //picture[a][b] = new Pixel(onoff*onoff,onoff*onoff/50,onoff*onoff/1000);
                 
                 //**************BLUE MACRO RED MICRO**************//
-                //picture[a][b] = new Pixel((onoff*onoff),onoff*onoff/50,onoff*onoff/50);
+                picture[a][b] = new Pixel((onoff*onoff),onoff*onoff/50,onoff*onoff/40);
                 
                 //**************CONFETTI**************//
-                picture[a][b] = new Pixel(onoff*onoff*onoff,onoff*onoff*onoff/10,onoff*onoff*onoff/500);
+                //picture[a][b] = new Pixel(onoff*onoff*onoff,onoff*onoff*onoff/10,onoff*onoff*onoff/500);
                 
                 //**************GRAYSCALE**************//
                 //picture[a][b] = new Pixel(onoff,onoff,onoff);
@@ -85,10 +87,9 @@ public class Display{
     }
     
     public static double iterate(Complex num){
-        //Complex numi = num; //Mandelbrot Set
-        Complex numi = new Complex(-0.6,0.46); //Disconnected Julia Set
+        Complex numi = num; //Mandelbrot Set
+        //Complex numi = new Complex(-0.6,0.46); //Disconnected Julia Set
         //Complex numi = new Complex(-0.6,0.42); //Connected Julia Set
-        Complex one = new Complex(1,0);
         for(int convergence = 0; convergence<iterations; convergence++){
             num = num.times(num).plus(numi);
             if(num.abs()>4){
