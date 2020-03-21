@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Mandelbrot
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Mandelbrot\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=Mandelbrot()
+comment1.params=h\ w\ iterations\ ci\ ri\ l\ output
+comment1.target=Mandelbrot(int,\ int,\ int,\ double,\ double,\ double,\ java.lang.String)
 comment2.params=
 comment2.target=void\ main()
-comment3.params=ri\ ci\ l
-comment3.target=void\ generate(double,\ double,\ double)
+comment3.params=
+comment3.target=void\ generate()
 comment4.params=picture
 comment4.target=void\ output(Pixel[][])
 comment5.params=num

@@ -11,14 +11,49 @@ import java.lang.Math;
  */
 public class Mandelbrot implements Display
 {
-    public Mandelbrot(){
-        final int h =10000; // make upper case
-        int w = 10000;
-        int iterations = 100;
+    private double ci;
+    private double ri;
+    private double l;
+    private int h;
+    private int w;
+    private int iterations;
+    private static String output;
+    public Mandelbrot(final int h, final int w, int iterations,double ci, double ri, double l, String output){
+        this.ci = ci;
+        this.ri = ri;
+        this.l = l;
+        this.h = h;
+        this.w = w;
+        this.iterations = iterations;
+        this.output = output;
     }
     public static void main() throws Exception{
-        Mandelbrot m = new Mandelbrot();
-        m.generate(0.0,0.0,1.0); // full
+        Mandelbrot m;
+        double a = 0.0;
+        double b = 0.0;
+        double w = 1.0;
+        double tempw;
+        
+        double aa = 0.45;
+        double bb = 0.45;
+        double ww = 0.005;
+        
+        double frames = 10;
+        
+        double aaa = aa/frames;
+        double bbb = bb/frames;
+        double www = Math.log(ww)/Math.log(frames);
+        a = 0;
+        b = 0;
+        for(int i = 1; i<= frames; i++){
+            output = "output" + i + ".bmp";
+            a = aaa*i;
+            b = bbb*i;
+            w = ww/(Math.pow(10,Math.log(10*i/frames)));
+            m = new Mandelbrot(100,100,100,a,b,w,output);
+            m.generate(); // full
+        }
+        
         //generate(0.20,0.35,0.3); // top half
         //generate(0.4,0.4,0.1); //crack
         //generate(0.45,0.45,0.005); // swirl
@@ -34,7 +69,7 @@ public class Mandelbrot implements Display
         System.out.println("Image created.");
     }
     
-    public void generate(double ri, double ci, double l)throws Exception{
+    public void generate()throws Exception{
         Complex complix;
         Pixel[][] picture = new Pixel[h][w];
         int a;
@@ -47,7 +82,7 @@ public class Mandelbrot implements Display
                 int onoff = (int)(iterate(complix)*255);
                 
                 //**************RED MACRO RED MICRO**************//
-                picture[a][b] = new Pixel(onoff*onoff,onoff*onoff/1000000,onoff*onoff/100000);
+                //picture[a][b] = new Pixel(onoff*onoff,onoff*onoff/1000000,onoff*onoff/100000);
                 
                 //**************GREEN MACRO RED MICRO**************// so far the best one
                 //picture[a][b] = new Pixel(onoff*onoff,onoff*onoff/50,onoff*onoff/1000);
@@ -68,7 +103,7 @@ public class Mandelbrot implements Display
                 //picture[a][b] = new Pixel(onoff*onoff/50,onoff*onoff/50,onoff*onoff);
                 
                 //**************RED MACRO BLUE MICRO**************//
-                //picture[a][b] = new Pixel(onoff*onoff/50,onoff*onoff/1000,onoff*onoff);
+                picture[a][b] = new Pixel(onoff*onoff/50,onoff*onoff/1000,onoff*onoff);
             }
         }
         
@@ -93,7 +128,7 @@ public class Mandelbrot implements Display
         BufferedImage image = new
         BufferedImage(w-p,h-p,BufferedImage.TYPE_INT_RGB);
         image.setRGB(0,0,w-p,h-p,pixels,0,w-p);
-        ImageIO.write(image, "bmp", new File("output.bmp") );
+        ImageIO.write(image, "bmp", new File(output) );
     }
     
     public double iterate(Complex num){
